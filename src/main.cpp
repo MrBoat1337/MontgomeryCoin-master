@@ -45,7 +45,7 @@ unsigned int nStakeMinAge = 60 * 60 * 24 * 1;	// minimum age for coin age: 1d
 unsigned int nStakeMaxAge = 60 * 60 * 24 * 7;	// stake age of full weight: 7d
 unsigned int nStakeTargetSpacing = 60;			// 60 sec block spacing
 
-int64 nChainStartTime = 1474522407;
+int64 nChainStartTime = 1474530544;
 int nCoinbaseMaturity = 40;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2541,7 +2541,7 @@ bool LoadBlockIndex(bool fAllowNew)
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xD7;
+        pchMessageStart[0] = 0x4B;
         pchMessageStart[1] = 0xB3;
         pchMessageStart[2] = 0xB5;
         pchMessageStart[3] = 0xD1;
@@ -2572,7 +2572,7 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 
         // Genesis block
-        const char* pszTimestamp = "Possible Signs Of Life On Jupiter Moon Europa 1474522407";
+        const char* pszTimestamp = "Possible Signs Of Life On Jupiter Moon Europa 1474530544";
         CTransaction txNew;
         txNew.nTime = nChainStartTime;
         txNew.vin.resize(1);
@@ -2585,11 +2585,11 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1474522407;
+        block.nTime    = 1474530544;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
         block.nNonce   = 0;
 
-        if ( false && (block.GetHash() != hashGenesisBlock)) {
+        if ( true && (block.GetHash() != hashGenesisBlock)) {
             // This will figure out a valid hash and Nonce if you're
             // creating a different genesis block:
             uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
@@ -2611,7 +2611,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
 
-        assert(block.hashMerkleRoot == uint256("0b7ecd5bb28692792fec15a8bca8efd13f1d89e611044472636b62e6f09ddd41"));
+        assert(block.hashMerkleRoot == uint256(""));
 		assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
 
         // Start new block file
