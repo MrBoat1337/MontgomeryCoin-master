@@ -135,7 +135,7 @@ OBJS= \
     obj/scrypt-x86_64.o
 
 
-all: Platonicd
+all: MontgomeryCoind
 
 test check: test_Platonic FORCE
 	./test_Platonic
@@ -162,7 +162,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-Platonicd: $(OBJS:obj/%=obj/%)
+MontgomeryCoind: $(OBJS:obj/%=obj/%)
 	$(LINK) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -178,7 +178,7 @@ test_Platonic: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(LINK) $(xCXXFLAGS) -o $@ $(LIBPATHS) $^ -Wl,-B$(LMODE) -lboost_unit_test_framework $(xLDFLAGS) $(LIBS)
 
 clean:
-	-rm -f Platonicd test_Platonic
+	-rm -f MontgomeryCoind test_Platonic
 	-rm -f obj/*.o
 	-rm -f obj-test/*.o
 	-rm -f obj/*.P
