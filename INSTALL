@@ -1,0 +1,9 @@
+Building MontgomeryCoin
+
+See doc/readme-qt.rst for instructions on building MontgomeryCoin QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of MontgomeryCoin.
+
+See doc/build-*.txt for instructions on building Platonicd,
+the intended-for-services, no-graphical-interface, reference
+implementation of MontgomeryCoin.
